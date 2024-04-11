@@ -1,0 +1,31 @@
+function addTimeDisplay() {
+    const timeDisplay = document.createElement('div');
+    
+    timeDisplay.style.position = 'fixed';
+    timeDisplay.style.top = '50%';
+    timeDisplay.style.left = '50%';
+    timeDisplay.style.transform = 'translate(-50%, -50%)';
+    timeDisplay.style.fontSize = '36px';
+    timeDisplay.style.fontFamily = 'Arial, sans-serif';
+    timeDisplay.style.color = '#ffffff'; // Adjust text color as needed
+    timeDisplay.style.zIndex = '9999';
+
+    document.body.appendChild(timeDisplay);
+
+    function updateTime() {
+        // Get the current time
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+
+        // Update the content of the time display with the current time
+        timeDisplay.textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    updateTime();
+
+    setInterval(updateTime, 1000);
+}
+
+addTimeDisplay();
